@@ -1,0 +1,161 @@
+/**
+ * @prop --bloom-container-background: A background for the container.
+ * @prop --bloom-container-width: Container width, default 100%.
+ * @prop --bloom-container-max-width: Container max width.
+ * @prop --bloom-container-height: Container height, default 100%.
+ * @prop --bloom-container-max-height: Container max height.
+ * @prop --bloom-size: The base size of the flower, default 100px. The heart and the petals inherit this size.
+ * @prop --bloom-petal-shadow: A box-shadow for each petals, default rgba(0, 0, 0, .16).
+ * @prop --bloom-petal-north-background: Background color of the north petal, default #FB9196
+ * @prop --bloom-petal-north-east-background: Background color of the north petal, default #F97C22
+ * @prop --bloom-petal-south-east-background: Background color of the north petal, default #FFD664
+ * @prop --bloom-petal-south-background: Background color of the north petal, default #2CB250
+ * @prop --bloom-petal-south-west-background: Background color of the north petal, default #2AD4CF
+ * @prop --bloom-petal-north-west-background: Background color of the north petal, default #2E7979
+ */
+
+:host {
+  position: relative;
+  width: var(--bloom-container-width, 100%);
+  max-width: var(--bloom-container-max-width);
+  height: var(--bloom-container-height, 100%);
+  max-height: var(--bloom-container-max-height);
+  background: var(--bloom-container-background);
+  display: inline-block;
+}
+
+div.heart {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: var(--bloom-size, 100px);
+  height: var(--bloom-size, 100px);
+
+  background: white;
+  border-radius: 50%;
+
+  border: calc(var(--bloom-size, 100px) * 0.05) solid #f8f8f5;
+}
+
+div.petal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  width: var(--bloom-size, 100px);
+  height: var(--bloom-size, 100px);
+
+  display: grid;
+  grid-template-columns: 1fr;
+
+  justify-content: center;
+  align-items: center;
+
+  div.background,
+  div.foreground {
+    grid-row-start: 1;
+    grid-column-start: 1;
+  }
+
+  div.background {
+    background: white;
+    width: calc(var(--bloom-size, 100px) * 0.9);
+    height: calc(var(--bloom-size, 100px) * 0.9);
+    border-radius: calc(var(--bloom-size, 100px) * 0.9) calc(var(--bloom-size, 100px) * 0.9) calc(var(--bloom-size, 100px) * 0.9) 0;
+    box-shadow: 0 0 6px var(--bloom-petal-shadow, rgba(0, 0, 0, 0.16));
+  }
+
+  div.foreground {
+    width: calc(var(--bloom-size, 100px) * calc(0.9 * var(--bloom-ratio)));
+    height: calc(var(--bloom-size, 100px) * calc(0.9 * var(--bloom-ratio)));
+    border-radius: calc(var(--bloom-size, 100px) * calc(0.9 * var(--bloom-ratio)))
+      calc(var(--bloom-size, 100px) * calc(0.9 * var(--bloom-ratio))) calc(var(--bloom-size, 100px) * calc(0.9 * var(--bloom-ratio))) 0;
+    transform: translate(0, calc(var(--bloom-size, 100px) * calc(0.045 * (10 * (1 - var(--bloom-ratio))))));
+  }
+
+  &.north {
+    transform: translate(-50%, -150%) rotate(-45deg);
+
+    div.foreground {
+      background: var(--bloom-petal-north-background, #fb9196);
+    }
+  }
+
+  &.north-east {
+    transform: translate(34%, -97%) rotate(27deg);
+
+    div.foreground {
+      background: var(--bloom-petal-north-east-background, #f97c22);
+    }
+  }
+
+  &.south-east {
+    transform: translate(34%, 0%) rotate(77deg);
+
+    div.foreground {
+      background: var(--bloom-petal-south-east-background, #ffd664);
+    }
+  }
+
+  &.south {
+    transform: translate(-50%, 50%) rotate(135deg);
+
+    div.foreground {
+      background: var(--bloom-petal-south-background, #2cb250);
+    }
+  }
+
+  &.south-west {
+    transform: translate(-134%, 0%) rotate(187deg);
+
+    div.foreground {
+      background: var(--bloom-petal-south-west-background, #2ad4cf);
+    }
+  }
+
+  &.north-west {
+    transform: translate(-134%, -97%) rotate(247deg);
+
+    div.foreground {
+      background: var(--bloom-petal-north-west-background, #2e7979);
+    }
+  }
+}
+
+div.placeholder {
+  position: absolute;
+
+  transform: translate(-50%, 0);
+
+  &.north {
+    top: 5%;
+    left: 50%;
+  }
+
+  &.north-east {
+    top: 15%;
+    left: 80%;
+  }
+
+  &.south-east {
+    bottom: 15%;
+    left: 80%;
+  }
+
+  &.south {
+    bottom: 5%;
+    left: 50%;
+  }
+
+  &.south-west {
+    bottom: 15%;
+    left: 20%;
+  }
+
+  &.north-west {
+    top: 15%;
+    left: 20%;
+  }
+}

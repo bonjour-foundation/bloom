@@ -1,0 +1,61 @@
+/**
+ * @prop --range-track-background: The background of the range's track, default #F0F0ED.
+ * @prop --range-track-fill: The fill color of the range's track, default #FB9196.
+ * @prop --range-thumb-background: The background of the range's thumb, default linear-gradient(#FFFFFF, #CCC4C1).
+ * @prop --range-thumb-border: The border of the range's thumb, default 2px solid #8f7c76.
+ */
+
+input[type="range"] {
+  background-image: -webkit-gradient(
+    linear,
+    0% 0%,
+    100% 0%,
+    color-stop(0, var(--range-track-background, #f0f0ed)),
+    color-stop(1, var(--range-track-background, #f0f0ed))
+  );
+  -webkit-appearance: none;
+  -moz-apperance: none;
+  border-radius: 6px;
+  height: 6px;
+  width: 100%;
+}
+
+input[type="range"]:focus {
+  outline: none;
+}
+
+input[type="range"]::-moz-focus-outer {
+  border: 0;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  border: var(--range-thumb-border, 2px solid #8f7c76);
+  height: 20px;
+  width: 20px;
+  border-radius: 50px;
+  background: var(--range-thumb-background, linear-gradient(#ffffff, #ccc4c1));
+  cursor: pointer;
+  -webkit-appearance: none;
+}
+
+input[type="range"]::-moz-range-thumb {
+  border: var(--range-thumb-border, 2px solid #8f7c76);
+  height: 20px;
+  width: 20px;
+  border-radius: 50px;
+  background: var(--range-thumb-background, linear-gradient(#ffffff, #ccc4c1));
+  cursor: pointer;
+}
+
+input[type="range"]::-ms-thumb {
+  border: var(--range-thumb-border, 2px solid #8f7c76);
+  height: 20px;
+  width: 20px;
+  border-radius: 50px;
+  background: var(--range-thumb-background, linear-gradient(#ffffff, #ccc4c1));
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  cursor: pointer;
+}

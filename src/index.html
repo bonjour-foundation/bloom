@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <title>Stencil Component Starter</title>
+
+    <script type="module" src="/build/bonjour-bloom.esm.js"></script>
+    <script nomodule src="/build/bonjour-bloom.js"></script>
+
+    <style>
+      body {
+        background: #f0f0ed;
+      }
+    </style>
+
+    <script type="module" src="https://unpkg.com/@deckdeckgo/core@latest/dist/deckdeckgo/deckdeckgo.esm.js"></script>
+
+    <script
+      type="module"
+      src="https://unpkg.com/@deckdeckgo/slide-title@latest/dist/deckdeckgo-slide-title/deckdeckgo-slide-title.esm.js"
+    ></script>
+  </head>
+  <body>
+    <h1>Test integration in a Website:</h1>
+
+    <bonjour-question style="--question-width: 300px; margin-bottom: 16px" start="4">
+      <h1 slot="question">Default value?</h1>
+      <span slot="low">sehr eingeschränkt</span>
+      <span slot="high">sehr gut</span>
+    </bonjour-question>
+
+    <div
+      style="
+        width: 187px;
+        height: 333px;
+        border: 2px solid black;
+        border-radius: 4px;
+        overflow: hidden;
+        display: inline-block;
+        position: relative;
+      "
+    >
+      <deckgo-deck
+        embedded="true"
+        keyboard="false"
+        style="
+          font-size: 50%;
+          --slide-padding-top: 0;
+          --slide-padding-start: 0;
+          --slide-padding-end: 0;
+          --slide-padding-bottom: 0;
+          --pager-display: none;
+        "
+      >
+        <deckgo-slide-title>
+          <section slot="content" style="--question-width: var(--slide-width); --question-padding: 8px">
+            <h1>Gesundheit</h1>
+
+            <bonjour-question>
+              <h4 slot="question">Wie bewerten Sie Ihre körperliche Gesundheit?</h4>
+              <span slot="low">sehr eingeschränkt</span>
+              <span slot="high">sehr gut</span>
+            </bonjour-question>
+
+            <bonjour-question style="margin-top: 16px">
+              <h4 slot="question">Wie bewerten Sie Ihre geistige Gesundheit?</h4>
+              <span slot="low">besorgniserregend</span>
+              <span slot="high">sehr gut</span>
+            </bonjour-question>
+
+            <button style="padding: 8px; margin: 16px" onclick="next()">Weiter</button>
+          </section>
+        </deckgo-slide-title>
+
+        <deckgo-slide-title>
+          <section slot="content" style="--range-track-fill: #f97c22; --question-width: var(--slide-width); --question-padding: 8px">
+            <h1>Soziale Einbettung</h1>
+
+            <bonjour-question>
+              <h4 slot="question">Wie bewerten Sie Ihre soziale Einbettung?</h4>
+              <span slot="low">einsam</span>
+              <span slot="high">sehr reichhaltig</span>
+            </bonjour-question>
+
+            <bonjour-question style="margin-top: 16px">
+              <h4 slot="question">Wie oft haben Sie wertvolle Begegnungen mit Menschen?</h4>
+              <span slot="low">viel zu selten</span>
+              <span slot="high">mehr als genug</span>
+            </bonjour-question>
+
+            <button style="padding: 8px; margin: 16px" onclick="next()">Weiter</button>
+          </section>
+        </deckgo-slide-title>
+
+        <deckgo-slide-title>
+          <section slot="content" style="--range-track-fill: #ffd664; --question-width: var(--slide-width); --question-padding: 8px">
+            <h1>Kultur & Entfaltung</h1>
+
+            <bonjour-question>
+              <div slot="question" style="padding-bottom: 8px">
+                <h4>Wie bewerten Sie die kulturelle Reichhaltigkeit Ihres Alltags?</h4>
+                <span>(Spass, Unterhaltung, Kultur, Kunst etc)</span>
+              </div>
+              <span slot="low">sehr dürftig</span>
+              <span slot="high">sehr reichhaltig</span>
+            </bonjour-question>
+
+            <bonjour-question style="margin-top: 16px">
+              <div slot="question" style="padding-bottom: 8px">
+                <h4>Wie bewerten Sie Ihre Möglichkeit, sich zu entfalten?</h4>
+                <span>(lernen, weiterkommen, sich ausleben, sich selbst sein)</span>
+              </div>
+              <span slot="low">sehr eingeschränkt</span>
+              <span slot="high">voll im Fluss</span>
+            </bonjour-question>
+
+            <button style="padding: 8px; margin: 16px" onclick="next()">Weiter</button>
+          </section>
+        </deckgo-slide-title>
+
+        <deckgo-slide-title>
+          <section slot="content" style="--range-track-fill: #2cb250; --question-width: var(--slide-width); --question-padding: 8px">
+            <h1>Haushalt</h1>
+
+            <bonjour-question>
+              <h4 slot="question">Wie bewerten Sie Ihre Möglichkeit, den Haushalt selbst oder im Team zu meistern?</h4>
+              <span slot="low">sehr beschränkt</span>
+              <span slot="high">schaffe ich gut alleine</span>
+            </bonjour-question>
+
+            <bonjour-question style="margin-top: 16px">
+              <h4 slot="question">Wie wohl fühlen Sie sich in Ihren 4 Wänden?</h4>
+              <span slot="low">gar nicht wohl</span>
+              <span slot="high">vögeliwohl</span>
+            </bonjour-question>
+
+            <button style="padding: 8px; margin: 16px" onclick="next()">Weiter</button>
+          </section>
+        </deckgo-slide-title>
+
+        <deckgo-slide-title>
+          <section slot="content" style="--range-track-fill: #2ad4cf; --question-width: var(--slide-width); --question-padding: 8px">
+            <h1>Lebensraum & Mobilität</h1>
+
+            <bonjour-question>
+              <div slot="question" style="padding-bottom: 8px">
+                <h4>Wie bewerten Sie die Qualität Ihres Lebensraums?</h4>
+                <span>(z.B. Anbindung an ÖV, Möglichkeit für Spaziergänge, Orte zum Verweilen, Post, Läden, Treffs, Nachbarn)</span>
+              </div>
+              <span slot="low">hmm</span>
+              <span slot="high">genial</span>
+            </bonjour-question>
+
+            <bonjour-question style="margin-top: 16px">
+              <h4 slot="question">Wie sicher und aufgehoben fühlen Sie sich in Ihrer Umgebung?</h4>
+              <span slot="low">entfremdet</span>
+              <span slot="high">sehr sicher</span>
+            </bonjour-question>
+
+            <button style="padding: 8px; margin: 16px" onclick="next()">Gleich haben wir es...</button>
+          </section>
+        </deckgo-slide-title>
+
+        <deckgo-slide-title>
+          <section slot="content" style="--range-track-fill: #2e7979; --question-width: var(--slide-width); --question-padding: 8px">
+            <h1>Hab & Gut</h1>
+
+            <bonjour-question>
+              <h4 slot="question">Wie bewerten Sie Ihre finanzielle Sicherheit?</h4>
+              <span slot="low">existenzgefährdet</span>
+              <span slot="high">dick gepolstert</span>
+            </bonjour-question>
+
+            <bonjour-question style="margin-top: 16px">
+              <div slot="question" style="padding-bottom: 8px">
+                <h4>Wie gut fühlen Sie sich materiell ausgestattet?</h4>
+                <span>(Wohnung, Hilfsmittel, Barrierefreiheit, bedienbare Technik, Fortbewegungsmittel etc)</span>
+              </div>
+              <span slot="low">sehr knapp</span>
+              <span slot="high">verwöhnt</span>
+            </bonjour-question>
+
+            <button style="padding: 8px; margin: 16px" onclick="nextBloom()">Zur Auswertung</button>
+          </section>
+        </deckgo-slide-title>
+
+        <deckgo-slide-title>
+          <div slot="content" style="--bloom-size: 3rem; width: var(--slide-width); height: var(--slide-height); max-height: 100%">
+            <h4>Auswertung</h4>
+            <bonjour-bloom style="position: absolute; top: 0; left: 0"></bonjour-bloom>
+          </div>
+        </deckgo-slide-title>
+      </deckgo-deck>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', async (event) => {
+        const deck = document.querySelector('deckgo-deck');
+        if (deck) {
+          await deck.blockSlide(true);
+        }
+      });
+
+      async function next() {
+        const deck = document.querySelector('deckgo-deck');
+
+        if (deck) {
+          await deck.slideNext();
+        }
+      }
+
+      async function nextBloom() {
+        const deck = document.querySelector('deckgo-deck');
+
+        if (deck) {
+          const questions = deck.querySelectorAll('bonjour-question');
+          const bloom = deck.querySelector('bonjour-bloom');
+
+          if (bloom && questions && questions.length >= 12) {
+            const question0 = await questions[0].getValue();
+            const question1 = await questions[1].getValue();
+            const question2 = await questions[2].getValue();
+            const question3 = await questions[3].getValue();
+            const question4 = await questions[4].getValue();
+            const question5 = await questions[5].getValue();
+            const question6 = await questions[6].getValue();
+            const question7 = await questions[7].getValue();
+            const question8 = await questions[8].getValue();
+            const question9 = await questions[9].getValue();
+            const question10 = await questions[10].getValue();
+            const question11 = await questions[11].getValue();
+
+            bloom.ratioNorth = (question0 + question1) / 10;
+            bloom.ratioNorthEast = (question2 + question3) / 10;
+            bloom.ratioSouthEast = (question4 + question5) / 10;
+            bloom.ratioSouth = (question6 + question7) / 10;
+            bloom.ratioSouthWest = (question8 + question9) / 10;
+            bloom.ratioNorthWest = (question10 + question11) / 10;
+          }
+
+          await deck.slideNext();
+        }
+      }
+    </script>
+
+    <h1 style="padding-top: 64px">Test each components:</h1>
+
+    <bonjour-question style="--question-width: 300px">
+      <h1 slot="question">Wie bewerten Sie Ihre körperliche Gesundheit?</h1>
+      <span slot="low">sehr eingeschränkt</span>
+      <span slot="high">sehr gut</span>
+    </bonjour-question>
+
+    <div style="padding: 32px; width: 800px">
+      <bonjour-range></bonjour-range>
+    </div>
+
+    <bonjour-bloom
+      ratio-north="1"
+      ratio-north-east="0.9"
+      ratio-south-east="0.8"
+      ratio-south="0.7"
+      ratio-south-west="0.6"
+      ratio-north-west="0.5"
+      style="--bloom-container-width: 300px; --bloom-container-height: 400px"
+    >
+      <span slot="north" style="text-align: center; display: table">Gesundheit</span>
+      <span slot="north-east" style="text-align: center; display: table">Soziale Einbettung</span>
+      <span slot="south-east" style="text-align: center; display: table">Kultur & Entfaltung</span>
+      <span slot="south" style="text-align: center; display: table">Haushalt</span>
+      <span slot="south-west" style="text-align: center; display: table">Lebensraum & Mobilität</span>
+      <span slot="north-west" style="text-align: center; display: table">Hab & Gut</span>
+    </bonjour-bloom>
+
+    <bonjour-bloom
+      ratio-north="0.5"
+      ratio-north-east="0.4"
+      ratio-south-east="0.3"
+      ratio-south="0.2"
+      ratio-south-west="0.1"
+      ratio-north-west="0.0"
+      style="--bloom-container-width: 300px; --bloom-container-height: 400px"
+    ></bonjour-bloom>
+
+    <bonjour-bloom
+      ratio-north="0.75"
+      ratio-north-east="0.44"
+      ratio-south-east="0.89"
+      ratio-south="0.21"
+      ratio-south-west="0.12"
+      ratio-north-west="0"
+      style="--bloom-container-width: 300px; --bloom-container-height: 400px"
+    ></bonjour-bloom>
+
+    <div style="width: 350px; height: 200px; --bloom-size: 40px; display: inline-block">
+      <bonjour-bloom>
+        <span slot="north" style="text-align: center; display: table; font-size: 6px">Gesundheit</span>
+        <span slot="north-east" style="text-align: center; display: table; font-size: 6px">Soziale Einbettung</span>
+        <span slot="south-east" style="text-align: center; display: table; font-size: 6px">Kultur & Entfaltung</span>
+        <span slot="south" style="text-align: center; display: table; font-size: 6px">Haushalt</span>
+        <span slot="south-west" style="text-align: center; display: table; font-size: 6px">Lebensraum & Mobilität</span>
+        <span slot="north-west" style="text-align: center; display: table; font-size: 6px">Hab & Gut</span>
+      </bonjour-bloom>
+    </div>
+
+    <div style="width: 200px; height: 200px; --bloom-size: 1rem; display: inline-block">
+      <bonjour-bloom></bonjour-bloom>
+    </div>
+  </body>
+</html>
