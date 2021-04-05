@@ -1,5 +1,5 @@
 {
-  "name": "bloom",
+  "name": "@bonjour-foundation/bloom",
   "version": "1.0.0-beta.1",
   "description": "An interactive questionnaire to assess for yourself how well you succeed in everyday life.",
   "main": "dist/index.cjs.js",
@@ -10,6 +10,7 @@
   "types": "dist/types/index.d.ts",
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
+  "unpkg": "dist/bonjour-bloom/bonjour-bloom.esm.js",
   "files": [
     "dist/",
     "loader/",
